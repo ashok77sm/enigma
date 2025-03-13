@@ -1,0 +1,39 @@
+pipeline {
+    agent {
+        label 'build'
+    }
+	options {
+	       buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '8', numToKeepStr: '4')
+		   retry(3)
+	}
+	triggers {
+           pollSCM 'H * * * *'
+    }
+	
+	stages {
+            stage('checkout-stage') {
+                steps {
+                    git branch: 'main', credentialsId: 'ashoksm', url: 'https://github.com/ashok77sm/java-example.git'
+                }
+            }   
+
+            stage('test-stage') {
+                steps {
+                   echo "This is testcase and is taken care while building an artifact"
+                }
+            }
+			
+			stage('build-stage') {
+                steps {
+                   sh "touch build-stage-1"
+                }
+            }
+
+            stage('deploy-stage') {
+                steps {
+                   sh "touch deploy-stage-1"
+                }
+            }
+
+    }
+}
