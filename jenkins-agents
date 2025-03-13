@@ -1,0 +1,29 @@
+pipeline {
+     agent none
+	 stages {
+	    stage ('checkout-stage') {
+		     agent { label 'enigma' } 
+			 steps {
+			      git branch: 'main', credentialsId: 'ashoksm', url: 'https://github.com/ashok77sm/java-example.git'  
+             }
+		}
+		stage ('test-stage') {
+		     agent {label 'build'}
+			 steps {
+			 echo "This test case is taken care"
+			 }
+		}	 
+		stage ('build-stage') {
+		     agent {label 'build'}
+			 steps {
+			 sh "touch build-stage"
+			 }
+		}
+        stage ('deploy-stage') {
+		     agent {label 'enigma'}
+			 steps {
+			 sh "touch deploy-stage"
+			 }
+		}
+	 }
+}
