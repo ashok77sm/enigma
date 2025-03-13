@@ -7,7 +7,7 @@ pipeline {
 		   retry(3)
 	}
 	triggers {
-           pollSCM 'H * * * *'
+           pollSCM '* * * * *'
     }
 	
 	stages {
