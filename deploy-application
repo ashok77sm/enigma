@@ -1,0 +1,31 @@
+pipeline {
+    agent {
+        label 'build'
+    }
+	stages {
+            stage('checkout-stage') {
+                steps {
+                    git branch: 'main', credentialsId: 'ashoksm', url: 'https://github.com/ashok77sm/java-example.git'
+                }
+            }   
+
+            stage('test-stage') {
+                steps {
+                   echo "This is testcase and is taken care while building an artifact"
+                }
+            }
+			
+			      stage('build-stage') {
+                steps {
+                   sh 'mvn clean install'
+                }
+            }
+
+            stage('deploy-stage') {
+                steps {
+                   sh 'sudo cp target/*.war /opt/tomcat/apache-tomcat-9.0.68/webapps'
+                }
+            }
+
+    }
+}
