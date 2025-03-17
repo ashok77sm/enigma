@@ -1,0 +1,24 @@
+pipeline {
+   agent {label 'build'}
+   parameters {
+       string defaultValue: 'Ashok', name: 'name'
+   }
+   
+      stages {
+	      stage('checkout-stage') {
+		       steps {
+		          echo "This is checkout stage"
+			     }  
+		    }
+		    stage('test-stage') {
+		       input {
+              message 'Would you like to continue?'
+              ok 'Yes'
+			        submitter 'ashok'
+           }
+			      steps { 
+			        echo "This is test stage"
+			      }  
+		     }
+	     }
+}	 
