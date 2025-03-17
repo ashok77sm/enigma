@@ -16,7 +16,7 @@ pipeline {
               ok 'Yes'
 	      submitter 'ashok,enigma'
               parameters {
-                  string(name: 'Ashok')
+                  string(name: 'User')
 	      }
         }
 		steps { 
