@@ -6,19 +6,21 @@ pipeline {
    
       stages {
 	      stage('checkout-stage') {
-		       steps {
-		          echo "This is checkout stage"
-			     }  
-		    }
-		    stage('test-stage') {
-		       input {
+		    steps {
+		      echo "This is checkout stage"
+			}  
+		  }
+		  
+		  
+		  stage('test-stage') {
+		    input {
               message 'Would you like to continue?'
               ok 'Yes'
-			        submitter 'ashok'
-           }
-			      steps { 
-			        echo "This is test stage"
-			      }  
-		     }
-	     }
+			  submitter 'ashok'
+            }
+			steps { 
+			 echo "This is test stage"
+			} 
+		  }
+	  }
 }	 
