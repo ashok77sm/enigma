@@ -16,7 +16,7 @@ pipeline {
 		    input {
                           message 'Would you like to continue?'
                           ok 'Yes'
-			  submitter 'Ashok M'
+			  submitter "ashok"
                      }
 			steps { 
 			 echo "This is test stage"
