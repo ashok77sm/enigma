@@ -1,0 +1,35 @@
+pipeline {
+    agent {
+        label 'build'
+    }
+
+	stages {
+            stage('checkout-stage') {
+                steps {
+                    git branch: 'main', credentialsId: 'ashoksm', url: 'https://github.com/ashok77sm/java-example.git'
+                }
+            }   
+			
+			stage('build-stage') {
+                steps {
+                   sh 'mvn clean install'
+                }
+            }
+
+            stage('upload to jfrog artifactory') {
+                steps {
+				            script {
+					              def server = Artifactory.server('jfrog')
+					              def uploadSpec="""{
+					                "files":[{
+					                   "pattern":"target/works-with-heroku-1.0.war",
+							               "target":"maven/test1.war"
+					                 }]
+					              }"""
+					              server.upload(uploadSpec)
+					           }
+                }
+            }
+
+    }
+}
