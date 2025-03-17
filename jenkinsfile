@@ -5,20 +5,23 @@ pipeline {
    }
    
       stages {
-	      stage('checkout-stage') {
-		       steps {
-		          echo "This is checkout stage"
-			     }  
-		    }
-		    stage('test-stage') {
-		       input {
+	stage('checkout-stage') {
+		steps {
+		     echo "This is checkout stage"
+		}  
+	}
+	stage('deploy-stage') {
+	input {
               message 'Would you like to continue?'
               ok 'Yes'
-			        submitter 'ashok,enigma'
-           }
-			      steps { 
-			        echo "This is test stage"
-			      }  
-		     }
-	     }
+	      submitter 'ashok,enigma'
+              parameters {
+                  string(name: 'Ashok')
+	      }
+        }
+		steps { 
+		   echo "Deploy successfull!"
+		}  
+	}
+      }
 }	 
