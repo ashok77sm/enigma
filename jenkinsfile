@@ -5,7 +5,7 @@ pipeline {
    }
    
       stages {
-	      stage('checkout-stage') {
+	          stage('checkout-stage') {
 		    steps {
 		      echo "This is checkout stage"
 			}  
@@ -14,10 +14,10 @@ pipeline {
 		  
 		  stage('test-stage') {
 		    input {
-              message 'Would you like to continue?'
-              ok 'Yes'
+                          message 'Would you like to continue?'
+                          ok 'Yes'
 			  submitter 'ashok'
-            }
+                     }
 			steps { 
 			 echo "This is test stage"
 			} 
