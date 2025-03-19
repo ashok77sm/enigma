@@ -13,7 +13,7 @@ pipeline {
 		    stage('test-stage') {
                       when {
                          branch 'dev'
-                         environment name:'user' value:'crimson'
+                         environment name:'user' value: 'crimson'
 		      }
 		       input {
                        message 'Would you like to continue?'
