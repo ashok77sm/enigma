@@ -17,11 +17,6 @@ pipeline {
                             expression { params.user == 'crimson' }
                          }
 		      }
-		       input {
-                       message 'Would you like to continue?'
-                       ok 'Yes'
-		       submitter 'ashok'
-           }
 			      steps { 
 			        echo "This is test stage"
 			      }  
