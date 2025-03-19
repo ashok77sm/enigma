@@ -14,7 +14,7 @@ pipeline {
                       when {
                          allof{
                             branch 'dev'
-                            environment name:'user' value: 'crimson'
+                            expression { params.user == 'crimson' }
                          }
 		      }
 		       input {
