@@ -13,7 +13,6 @@ pipeline {
 		    stage('test-stage') {
                       when {
                          branch 'dev'
-                         choice 'crimson'
 		      }
 		       input {
                        message 'Would you like to continue?'
