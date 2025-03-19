@@ -13,6 +13,9 @@ pipeline {
 		  
 		  
 		  stage('test-stage') {
+                    when {
+                      branch 'test'
+		    }
 		    input {
                           message 'Would you like to continue?'
                           ok 'Yes'
