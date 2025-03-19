@@ -12,7 +12,7 @@ pipeline {
 		    }
 		    stage('test-stage') {
                       when {
-                         allof{
+                         allof {
                             branch 'dev'
                             expression { params.user == 'crimson' }
                          }
