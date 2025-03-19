@@ -11,10 +11,13 @@ pipeline {
 			     }  
 		    }
 		    stage('test-stage') {
+                      when {
+                         branch 'dev'
+		      }
 		       input {
-              message 'Would you like to continue?'
-              ok 'Yes'
-			        submitter 'ashok'
+                       message 'Would you like to continue?'
+                       ok 'Yes'
+		       submitter 'ashok'
            }
 			      steps { 
 			        echo "This is test stage"
